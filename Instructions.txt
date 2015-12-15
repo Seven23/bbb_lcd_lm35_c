@@ -1,0 +1,41 @@
+INSTRUCTIONS TO RUN  THE LCD_ADC.c PROGRAM
+
+--> The connection from the Beaglebone to the LCD and the ADC is as follows:
+BBB         LCD
+P9_12       E
+P9_13       RS
+P9_15       DB4
+P8_11       DB5
+P8_12       DB6
+P8_14       DB7
+
+BBB         ADC
+P9_32       Vcc
+P9_34       GND
+P9_33       Data
+
+--> Before compiling, the following ports have to be configured
+-- You need to do it only once, after each beaglebone power up
+
+- This line is to activate the ADC
+echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots
+
+-- The following 12 lines are to configure the 6 pins used to control the LCD
+echo 60 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio60/direction
+echo 26 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio26/direction
+echo 44 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio44/direction
+echo 45 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio45/direction
+echo 48 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio48/direction
+echo 31 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio31/direction
+
+--> This line compiles the code contained in LCD_ADC.c and creates an a.out archive
+gcc beagle_gpio.c beagle_hd44780.c LCD_ADC.c
+
+--> Finally, this line executes the code compiled above
+./a.out
