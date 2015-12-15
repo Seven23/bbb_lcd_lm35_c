@@ -1,5 +1,5 @@
 # bbb_lcd_lm35_c
-Code to print the lecture of a LM35 temp sensor on a 16x2 LCD display using the C programming language.
+Code to use the BeagleBone Black to print the lecture of a LM35 temp sensor on a 16x2 LCD display using the C programming language.
 
 This code uses the library shared by https://github.com/nunoalves/BeagleBone-HD44780 and also some changes implemented by https://github.com/estef150892/Beaglebone-lcd-c to make the code run into the newer Beaglebone Black as it runs on a different kernel than the original one.
 
